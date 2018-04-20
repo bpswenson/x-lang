@@ -1,0 +1,130 @@
+//
+// Created by brian on 4/20/18.
+//
+
+#pragma once
+
+//TODO: Get rid of the macros
+
+#ifndef TOKEN
+#define TOKEN(name)
+#endif
+
+#ifndef KEYWORD
+#define KEYWORD(kw) TOKEN(kw_ ## kw)
+#endif
+
+#ifndef DECL_KEYWORD
+#define DECL_KEYWORD(kw) KEYWORD(kw)
+#endif
+
+#ifndef STMT_KEYWORD
+#define STMT_KEYWORD(kw) KEYWORD(kw)
+#endif
+
+#ifndef EXPR_KEYWORD
+#define EXPR_KEYWORD(kw) KEYWORD(kw)
+#endif
+
+#ifndef POUND_KEYWORD
+#define POUND_KEYWORD(kw) KEYWORD(kw)
+#endif
+
+
+// Expands for every punctuator LEFT_PAREN, ARROW
+// name Symbolic Name: LEFT_PAREN, ARROW
+// str String Literal: '(' '->'
+#ifndef PUNCTUATOR
+#define PUNCTUATOR(name, str) TOKEN(name)
+#endif
+
+//integer literal, char literal etc
+#ifndef LITERAL
+#define LITERAL(name) TOKEN(name)
+#endif
+
+//miscellaneous tokens, EOF, unknown
+#ifndef MISC
+#define MISC(name) TOKEN(name)
+#endif
+
+DECL_KEYWORD(enum)
+DECL_KEYWORD(fn)
+DECL_KEYWORD(import)
+DECL_KEYWORD(operator)
+DECL_KEYWORD(struct)
+DECL_KEYWORD(subscript)
+
+STMT_KEYWORD(if)
+STMT_KEYWORD(do)
+STMT_KEYWORD(else)
+STMT_KEYWORD(for)
+STMT_KEYWORD(in)
+STMT_KEYWORD(while)
+STMT_KEYWORD(return)
+STMT_KEYWORD(break)
+STMT_KEYWORD(continue)
+STMT_KEYWORD(switch)
+STMT_KEYWORD(case)
+STMT_KEYWORD(default)
+
+EXPR_KEYWORD(as)
+EXPR_KEYWORD(false)
+EXPR_KEYWORD(true)
+
+KEYWORD(__FILE__)
+KEYWORD(__LINE__)
+KEYWORD(__COLUMN__)
+KEYWORD(__FUNCTION__)
+
+PUNCTUATOR(OPEN_PAREN, "(")
+PUNCTUATOR(CLOSE_PAREN, ")")
+PUNCTUATOR(OPEN_BRACE, "{")
+PUNCTUATOR(CLOSE_BRACE, "}")
+PUNCTUATOR(OPEN_SQUARE, "[")
+PUNCTUATOR(CLOSE_SQUARE, "]")
+PUNCTUATOR(OPEN_ANGLE, "<")
+PUNCTUATOR(CLOSE_ANGLE, ">")
+PUNCTUATOR(PERIOD, ".")
+PUNCTUATOR(COMMA, ",")
+PUNCTUATOR(COLON, ":")
+PUNCTUATOR(SEMI, ";")
+PUNCTUATOR(POUND, "#")
+PUNCTUATOR(AMPERSAND, "&")
+PUNCTUATOR(ARROW, "->")
+
+PUNCTUATOR(STRING_QUOTE, "\"")
+PUNCTUATOR(MULTILINE_STRING_QUOTE, "\"\"\"")
+
+POUND_KEYWORD(KEYPATH)
+POUND_KEYWORD(LINE)
+POUND_KEYWORD(FILE)
+POUND_KEYWORD(COLUMN)
+POUND_KEYWORD(FUNCTION)
+
+LITERAL(INTEGER_LITERAL)
+LITERAL(FLOATING_LITERAL)
+LITERAL(STRING_LITERAL)
+
+MISC(UNKOWN)
+MISC(_EOF_)
+MISC(IDENTIFIER)
+MISC(OPER_BINARY_UNSPACED)
+MISC(OPER_BINARY_SPACED)
+MISC(OPER_POSTFIX)
+MISC(OPER_PREFIX)
+MISC(COMMENT)
+
+MISC(STRING_SEGMENT)
+MISC(STRING_INTERPOLATION_ANCHOR)
+
+#undef TOKEN
+#undef KEYWORD
+#undef DECL_KEYWORD
+#undef STMT_KEYWORD
+#undef EXPR_KEYWORD
+#undef PUNCTUATOR
+#undef POUND_KEYWORD
+#undef LITERAL
+#undef MISC
+
